@@ -1,4 +1,4 @@
- /* Body with animated gradient background */
+   /* ---- Global Styles ---- */
 body {
   display: flex;
   justify-content: center;
@@ -6,9 +6,10 @@ body {
   height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #1e3c72, #2a5298, #1e3c72);
+  background: linear-gradient(135deg, #1e3c72, #3362b3, #1e3c72);
   background-size: 300% 300%;
   animation: backgroundMove 10s ease infinite;
+  transition: background 0.5s;
 }
 
 /* Background animation */
@@ -18,84 +19,152 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* Calculator container */
+/* ---- Calculator Container ---- */
 .calculator {
-  width: 340px;
-  background: rgba(30, 30, 30, 0.9);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-  animation: scaleIn 0.8s ease;
-  backdrop-filter: blur(10px);
-  position: relative;
-  z-index: 1;
+  width: 300px;
+  background: rgba(30, 30, 30, 0.95);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+  transition: background 0.5s, color 0.5s;
 }
 
-/* Scale animation */
-@keyframes scaleIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* Display box */
+/* ---- Display ---- */
 #display {
   width: 100%;
-  height: 60px;
-  font-size: 1.8em;
+  height: 50px;
+  font-size: 1.5em;
   text-align: right;
-  margin-bottom: 20px;
-  padding: 10px;
+  margin-bottom: 15px;
+  padding: 8px;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   background: #111;
   color: #0ff;
-  box-shadow: 0 0 15px #0ff, inset 0 0 10px #0ff;
+  box-shadow: 0 0 10px #0ff, inset 0 0 6px #0ff;
+  transition: background 0.5s, color 0.5s;
 }
 
-/* Button grid */
+/* ---- Buttons Grid ---- */
 .buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
-/* Buttons with neon effect */
+/* ---- Button Styles ---- */
 button {
-  height: 60px;
-  font-size: 1.2em;
+  height: 50px;
+  font-size: 1em;
+  font-weight: bold;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   background: #222;
   color: #fff;
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: 0.3s;
-  box-shadow: 0 0 8px #00f7ff;
+  transition: 0.2s;
+  box-shadow: 0 0 6px #00f7ff;
 }
 
 /* Hover effect */
 button:hover {
   background: #333;
-  box-shadow: 0 0 15px #00f7ff, 0 0 25px #00f7ff;
+  box-shadow: 0 0 12px #00f7ff, 0 0 18px #00f7ff;
 }
 
-/* Active click effect */
+/* Button press animation */
 button:active {
   transform: scale(0.95);
+  box-shadow: 0 0 6px #00f7ff;
 }
 
-/* Special zero button */
+/* Zero spans two columns */
 .zero {
   grid-column: span 2;
 }
 
-/* Share button */
+/* Equal button full width */
+.equal {
+  grid-column: span 4;
+  background: #00f7ff;
+  color: #000;
+  font-size: 1.2em;
+  box-shadow: 0 0 12px #00f7ff, 0 0 24px #00f7ff;
+}
+
+/* ---- Advanced Section ---- */
+.advanced {
+  display: none;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.advanced button {
+  height: 45px;
+}
+
+/* Toggle Advanced Button */
+.toggle-adv {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: #444;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 6px #00f7ff;
+  transition: 0.3s;
+}
+
+.toggle-adv:hover {
+  background: #555;
+}
+
+/* WhatsApp share button */
 .share-btn {
   width: 100%;
-  margin-top: 15px;
-  background: #25d366;
+  margin-top: 12px;
+  padding: 12px;
+  background: #1fa751;
   color: #fff;
-  font-size: 1.1em;
-  box-shadow: 0 0 10px #25d366, 0 0 20px #25d366;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #25d366, 0 0 15px #25d366;
+  cursor: pointer;
+}
+
+/* ---- Dark/Light Mode ---- */
+.light-mode {
+  background: rgba(245, 245, 245, 0.95);
+  color: #000;
+}
+
+.light-mode #display {
+  background: #fff;
+  color: #222;
+  box-shadow: 0 0 6px #888, inset 0 0 3px #ccc;
+}
+
+.light-mode button {
+  background: #f0f0f0;
+  color: #000;
+  box-shadow: 0 0 4px #bbb;
+}
+
+.light-mode .equal {
+  background: #007bff;
+  color: #fff;
+}
+
+.light-mode .toggle-adv {
+  background: #ddd;
+  color: #000;
+}
+
+.light-mode .share-btn {
+  box-shadow: 0 0 8px #25d366;
 }
